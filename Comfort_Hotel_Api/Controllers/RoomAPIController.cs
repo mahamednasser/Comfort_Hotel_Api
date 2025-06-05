@@ -27,7 +27,7 @@ namespace Comfort_Hotel_Api.Controllers
 
 
         [HttpGet]
-        //[Authorize]
+       
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ResponseCache(Duration = 30)]
 
@@ -67,7 +67,7 @@ namespace Comfort_Hotel_Api.Controllers
 
 
         [HttpPost]
-        //[Authorize(Roles ="admin")]
+        [Authorize(Roles ="admin")]
         public async Task<ActionResult<RoomDTO>>create( [FromForm]RoomCreateDTO roomDto) 
         {
             if (roomDto == null) {
@@ -116,6 +116,8 @@ namespace Comfort_Hotel_Api.Controllers
         }
 
         [HttpDelete ("{id:int}")]
+        [Authorize(Roles ="admin")]
+
         public async Task<ActionResult> Delete(int id) 
         {
             if (id == 0) 
@@ -143,6 +145,8 @@ namespace Comfort_Hotel_Api.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [Authorize(Roles ="admin")]
+
         public async Task<ActionResult> Update (int id, [FromForm] RoomUpdateDTO roomUpdateDto)
           {
             if (roomUpdateDto == null|| id != roomUpdateDto.Id) {
