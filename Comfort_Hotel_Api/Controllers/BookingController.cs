@@ -35,6 +35,8 @@ namespace Comfort_Hotel_Api.Controllers
 
         [HttpGet]
         [ResponseCache(Duration =30)]
+        [Authorize]
+
 
         public async Task<ActionResult<IEnumerable<BookingDto>>> GetAll()
         {
@@ -60,7 +62,7 @@ namespace Comfort_Hotel_Api.Controllers
 
 
         [HttpPost()]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult> AddBooking(BookingCreateDto Book)
         {
             string userid;
@@ -113,7 +115,7 @@ namespace Comfort_Hotel_Api.Controllers
 
         }
         [HttpDelete("{id:int}")]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult> Delete(int id)
         {
             var booking=await _booking.GetAsync(x=>x.Id==id);
@@ -126,10 +128,6 @@ namespace Comfort_Hotel_Api.Controllers
             return NoContent();
         }
 
-        //[HttpPut("{id:int}")]
-        ////public async Task<ActionResult> Update(int id)
-        ////{
-
-        ////}
+      
     }
 }
