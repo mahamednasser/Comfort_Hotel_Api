@@ -47,6 +47,7 @@ namespace Comfort_Hotel_Api.Controllers
 
         [HttpGet("userRate")]
         [ResponseCache(Duration = 30)]
+        [Authorize]
 
         public async Task<ActionResult<IEnumerable<RoomRateDto>>> GetAll()
         {
@@ -83,6 +84,7 @@ namespace Comfort_Hotel_Api.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> AddRate([FromBody]RoomRateCreateDto rate)
         {
             string userid;
@@ -109,6 +111,7 @@ namespace Comfort_Hotel_Api.Controllers
 
 
         [HttpPut("{id:int}")]
+        [Authorize]
         public async Task<ActionResult> UpdateRate (int id,[FromBody]RoomRateDto rate)
         {
             if (id !=rate.Id || id==0 || rate.Id==0)
@@ -150,6 +153,7 @@ namespace Comfort_Hotel_Api.Controllers
 
 
         [HttpDelete("{id:int}")]
+        [Authorize]
         public async Task<ActionResult> deleteRate(int id)
         {
             string userid;
