@@ -21,6 +21,8 @@ namespace Comfort_Hotel_Api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
+
 
         public async Task<ActionResult<IEnumerable<CartResponseDto>>> GetAll() {
             string userid;
@@ -47,6 +49,8 @@ namespace Comfort_Hotel_Api.Controllers
 
 
         [HttpPost]
+        [Authorize]
+
         public async Task<ActionResult>Addcart([FromBody]CreatecartDto cart)
         {
             string userid;
@@ -78,6 +82,7 @@ namespace Comfort_Hotel_Api.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize]
         public async Task<ActionResult> DeleteCart(int id) { 
 
 
